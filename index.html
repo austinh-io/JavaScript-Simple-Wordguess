@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
+    <script
+      src="script.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-content">
+        <div class="title">
+          <h1>Hangman</h1>
+          <hr class="title-hr" />
+        </div>
+        <div class="game-container">
+          <div class="game-info-container">
+            <div id="word-display"></div>
+
+            <p id="guesses-left">
+              Guesses left: <span id="guess-count">##</span>
+            </p>
+            <div class="testing-label">
+              (TESTING) The Word: [[ <span id="the-word"></span> ]]
+            </div>
+          </div>
+          <div id="button-group"></div>
+          <button
+            id="reset-button"
+            class="button"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
