@@ -7,65 +7,14 @@ const theWordTestDisplay = document.getElementById('the-word'); //Just for testi
 
 let buttons = [];
 let inputLetters = [];
-let hiddenWord = [];
+let hiddenChars = [];
 
 let gameEnable = true;
 
 let theWord = '';
 
-let initGuessCount = 26;
+let initGuessCount = 3;
 let guessCount = initGuessCount;
-
-function setWord(word) {
-  theWord = word;
-  theWordTestDisplay.innerText = word; //Remove this for the final game, as it is only used for testing.b
-}
-
-function onButtonClicked() {
-  updateGuessCount();
-
-  if (gameEnable) {
-    verifyLetter(this.innerText);
-    this.disabled = true;
-  }
-}
-
-function verifyLetter(letterInput) {
-  let theWordSplit = theWord.toLowerCase().split('');
-  let letterInputLower = String(letterInput).toLowerCase();
-
-  for (let i = 0; i < theWordSplit.length; i++) {
-    if (theWordSplit[i] === letterInputLower) {
-      hiddenWord[i] = letterInputLower;
-    }
-  }
-
-  theWordLabel.innerText = hiddenWord.join('').toUpperCase();
-}
-
-function updateGuessCount() {
-  if (guessCount <= 0) {
-    gameEnable = false;
-  } else {
-    guessCount--;
-  }
-  guessCountLabel.innerText = guessCount;
-}
-
-function hideWord() {
-  //TODO: make it only hide LETTERS. Numbers, spaces, and special characters should NOT be hidden!
-  hiddenWord = [];
-
-  theWord.split('').forEach((letter) => {
-    isLetter(letter) ? hiddenWord.push('_') : hiddenWord.push(letter);
-  });
-
-  theWordLabel.innerText = hiddenWord.join('');
-}
-
-function isLetter(string) {
-  return string.length === 1 && string.match(/[a-z]/i);
-}
 
 function createButton(letter) {
   const buttonElement = document.createElement('button');
@@ -93,6 +42,67 @@ function initButtonGroup() {
   for (let i = 0; i < lettersInAlphabet; i++) {
     createButton(String.fromCharCode(i + latinScriptUppercase));
   }
+}
+
+function setWord(word) {
+  theWord = word;
+  theWordTestDisplay.innerText = word; //Remove this for the final game, as it is only used for testing.b
+}
+
+function onButtonClicked() {
+  if (gameEnable) {
+    processPlayerTurn(this.innerText);
+    this.disabled = true;
+  }
+}
+
+function processPlayerTurn(letterInput) {
+  let theWordSplit = theWord.toLowerCase().split('');
+  let letterInputLower = String(letterInput).toLowerCase();
+
+  if (!matchingLetter(theWordSplit, letterInputLower)) {
+    decrementGuessCount();
+  }
+
+  theWordLabel.innerText = hiddenChars.join('').toUpperCase();
+}
+
+function matchingLetter(word, letter) {
+  let letterMatched = false;
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === letter) {
+      updateHiddenChars(i, letter);
+      letterMatched = true;
+    }
+  }
+  return letterMatched;
+}
+
+function updateHiddenChars(index, char) {
+  hiddenChars[index] = char;
+}
+
+function decrementGuessCount() {
+  if (guessCount <= 0) {
+    gameEnable = false;
+  } else {
+    guessCount--;
+  }
+  guessCountLabel.innerText = guessCount;
+}
+
+function hideWord() {
+  hiddenChars = [];
+
+  theWord.split('').forEach((character) => {
+    isLetter(character) ? hiddenChars.push('_') : hiddenChars.push(character);
+  });
+
+  theWordLabel.innerText = hiddenChars.join('');
+}
+
+function isLetter(string) {
+  return string.length === 1 && string.match(/[a-z]/i);
 }
 
 function resetButtons() {
@@ -127,7 +137,7 @@ function initGame() {
   resetButton.addEventListener('click', resetGame);
 
   resetWord();
-  setWord('1234 !@#% lol');
+  setWord('Apples?');
   hideWord();
 }
 
