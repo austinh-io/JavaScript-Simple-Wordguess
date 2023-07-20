@@ -3,13 +3,17 @@
 const buttonGroup = document.getElementById('button-group');
 const guessCountLabel = document.getElementById('guess-count');
 const theWordLabel = document.getElementById('word-display');
-const theWordTestDisplay = document.getElementById('the-word'); //Just for testing.
+
+//Testing labels
+const theWordTestDisplay = document.getElementById('the-word');
+const testingLabel = document.getElementsByClassName('testing-label')[0];
 
 let buttons = [];
 let inputLetters = [];
 let hiddenChars = [];
 
-let gameEnable = true;
+let gameEnabled = true;
+let testingMode = false;
 
 let theWord = '';
 
@@ -44,13 +48,27 @@ function initButtonGroup() {
   }
 }
 
+function updateGuessCountLabel() {
+  guessCountLabel.innerText = guessCount;
+}
+
+function updateTheWordLabel(text) {
+  theWordLabel.innerText = text;
+}
+
 function setWord(word) {
   theWord = word;
-  theWordTestDisplay.innerText = word; //Remove this for the final game, as it is only used for testing.b
+
+  if (testingMode) {
+    testingLabel.classList.remove('hidden');
+    theWordTestDisplay.innerText = word;
+  } else {
+    testingLabel.classList.add('hidden');
+  }
 }
 
 function onButtonClicked() {
-  if (gameEnable) {
+  if (gameEnabled) {
     processPlayerTurn(this.innerText);
     this.disabled = true;
   }
@@ -64,7 +82,7 @@ function processPlayerTurn(letterInput) {
     decrementGuessCount();
   }
 
-  theWordLabel.innerText = hiddenChars.join('').toUpperCase();
+  updateTheWordLabel(hiddenChars.join('').toUpperCase());
 }
 
 function matchingLetter(word, letter) {
@@ -83,12 +101,15 @@ function updateHiddenChars(index, char) {
 }
 
 function decrementGuessCount() {
-  if (guessCount <= 0) {
-    gameEnable = false;
-  } else {
+  if (guessCount > 0) {
     guessCount--;
   }
-  guessCountLabel.innerText = guessCount;
+
+  if (guessCount <= 0) {
+    gameEnabled = false;
+  }
+
+  updateGuessCountLabel();
 }
 
 function hideWord() {
@@ -98,7 +119,7 @@ function hideWord() {
     isLetter(character) ? hiddenChars.push('_') : hiddenChars.push(character);
   });
 
-  theWordLabel.innerText = hiddenChars.join('');
+  updateTheWordLabel(hiddenChars.join(''));
 }
 
 function isLetter(string) {
@@ -112,12 +133,12 @@ function resetButtons() {
 }
 
 function resetWord() {
-  theWordLabel.innerText = theWord;
+  updateTheWordLabel(theWord);
 }
 
 function resetGuessCount() {
   guessCount = initGuessCount;
-  guessCountLabel.innerText = guessCount;
+  updateGuessCountLabel();
 }
 
 function resetGame() {
@@ -126,12 +147,12 @@ function resetGame() {
   resetGuessCount();
   hideWord();
 
-  gameEnable = true;
+  gameEnabled = true;
 }
 
 function initGame() {
   initButtonGroup();
-  guessCountLabel.innerText = initGuessCount;
+  updateGuessCountLabel();
 
   let resetButton = document.getElementById('reset-button');
   resetButton.addEventListener('click', resetGame);

@@ -29,6 +29,10 @@ hr.title-hr {
   width: 25rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .title {
   margin-bottom: 4rem;
 }
