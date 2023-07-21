@@ -27,7 +27,6 @@
         <div class="game-container">
           <div class="game-info-container">
             <div id="main-game-info">
-              <div id="word-display"></div>
               <div id="game-image-container">
                 <div id="game-image-caption-background">
                   <div id="game-image-caption-text">Image Caption</div>
@@ -37,13 +36,19 @@
                   src="assets/damage images/captioned images/Damage Image 0.png"
                 />
               </div>
+              <div id="word-display"></div>
             </div>
 
-            <p id="guesses-left">
-              Guesses left: <span id="guess-count">##</span>
-            </p>
-            <div class="testing-label">
-              (TESTING) The Word: [[ <span id="the-word"></span> ]]
+            <div id="sub-game-info">
+              <div id="guesses-left">
+                Guesses left: <span id="guess-count">##</span>
+              </div>
+              <div id="category">
+                Category: <span id="category-label">none</span>
+              </div>
+              <div class="testing-label">
+                (TESTING) The Word: [[ <span id="the-word"></span> ]]
+              </div>
             </div>
           </div>
           <div id="button-group"></div>
