@@ -44,7 +44,7 @@ hr.title-hr {
 
   height: 100%;
 
-  padding-inline: 8%;
+  padding-inline: 2%;
 }
 
 .main-content {
@@ -60,6 +60,9 @@ hr.title-hr {
 .game-info-container {
   margin-bottom: 2rem;
   font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 #button-group {
@@ -72,6 +75,77 @@ hr.title-hr {
 
   /* border: 1px solid red;
   background-color: rgba(255, 0, 0, 0.226); */
+}
+
+#main-game-info {
+  display: flex;
+  flex-basis: 100%;
+  gap: 20px;
+  align-items: center;
+  margin-block: 2rem;
+}
+
+#game-image-container {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex: 1;
+
+  position: relative;
+
+  border: 3px solid white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#game-image-caption-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+
+  background-color: #465fec86;
+  width: 100%;
+  height: 100%;
+}
+
+#game-image-caption-text {
+  position: absolute;
+  top: 10px;
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+}
+
+#game-image {
+  width: 100%;
+}
+
+#word-display {
+  overflow-wrap: break-word;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 3;
+
+  height: fit-content;
+  width: 100%;
+
+  font-weight: 700;
+  font-size: 3.2rem;
+  letter-spacing: 0.8rem;
+
+  color: rgb(119, 201, 255);
+  background-color: rgba(8, 102, 156, 0.521);
+
+  border-radius: 8px;
+
+  padding: 2rem 1rem;
 }
 
 button {
@@ -134,24 +208,6 @@ button:disabled:hover {
   background-color: #f73861;
 }
 
-#word-display {
-  overflow-wrap: break-word;
-
-  font-weight: 700;
-  font-size: 3.2rem;
-  letter-spacing: 0.8rem;
-
-  color: rgb(119, 201, 255);
-  background-color: rgba(8, 102, 156, 0.521);
-
-  border-radius: 8px;
-
-  width: 100%;
-
-  padding: 2rem 1rem;
-  margin-block: 2rem;
-}
-
 #guesses-left {
   font-weight: 600;
   font-size: 1.8rem;
@@ -188,6 +244,10 @@ button:disabled:hover {
   .title {
     margin-bottom: 2rem;
   }
+
+  #game-image-caption-text {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 650px) {
@@ -206,6 +266,10 @@ button:disabled:hover {
     padding: 4px 16px;
   }
 
+  .game-container {
+    border: 2px solid rgba(255, 255, 255, 0.39);
+  }
+
   #button-group {
     grid-template-columns: repeat(auto-fill, minmax(1.8rem, auto));
     gap: 14px 8px;
@@ -213,5 +277,29 @@ button:disabled:hover {
 
   .title {
     margin-bottom: 1.2rem;
+  }
+
+  #main-game-info {
+    flex-direction: column-reverse;
+  }
+
+  #word-display {
+    font-size: 1.2rem;
+    letter-spacing: 0.4rem;
+  }
+
+  #game-image-container {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #game-image {
+    height: 150px;
+    object-fit: scale-down;
+  }
+
+  #guesses-left {
+    font-size: 1rem;
+    font-weight: 500;
   }
 }
