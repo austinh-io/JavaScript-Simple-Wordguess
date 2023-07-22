@@ -19,8 +19,8 @@ let testingMode = false;
 
 let theWord = '';
 
-let initGuessCount = 3;
-let guessCount = initGuessCount;
+let initGuessCount = 0;
+let guessCount = 0;
 
 function createButton(letter) {
   const buttonElement = document.createElement('button');
@@ -59,6 +59,34 @@ function updateTheWordLabel(text) {
   theWordLabel.innerText = text;
 }
 
+function updateGuessCountColor() {
+  const started = ['#4ABAF7', '#004C75'];
+  const halfFail = ['#26FFB0', '#398066'];
+  const nearFail = ['#FF5C92', '#802E49'];
+  const fail = ['#848484', '#525252'];
+
+  if (guessCount == initGuessCount) {
+    setGuessCountColor(started[0], started[1]);
+  }
+
+  if (guessCount < initGuessCount && guessCount > 0) {
+    setGuessCountColor(halfFail[0], halfFail[1]);
+  }
+
+  if (guessCount == 1) {
+    setGuessCountColor(nearFail[0], nearFail[1]);
+  }
+
+  if (guessCount <= 0) {
+    setGuessCountColor(fail[0], fail[1]);
+  }
+}
+
+function setGuessCountColor(color, bgColor) {
+  guessCountLabel.style.color = color;
+  guessCountLabel.style.backgroundColor = bgColor;
+}
+
 function setWord(word) {
   theWord = word;
 }
@@ -90,6 +118,7 @@ function processPlayerTurn(letterInput) {
   }
 
   updateTheWordLabel(hiddenChars.join('').toUpperCase());
+  updateGuessCountColor();
 }
 
 function matchingLetter(word, letter) {
@@ -151,6 +180,11 @@ function setGameImage(imageSequence) {
     '.png';
 }
 
+function setGuessCount(guesses) {
+  initGuessCount = guesses;
+  guessCount = guesses;
+}
+
 function resetGameImage() {
   gameImage.src =
     './assets/damage images/captioned images/Damage Image ' +
@@ -163,6 +197,7 @@ function resetGame() {
   resetGuessCount();
   hideWord();
   resetGameImage();
+  updateGuessCountColor();
 
   gameEnabled = true;
 }
@@ -172,10 +207,12 @@ function initGame() {
   initButtonGroup();
 
   setWord('Bananas');
+  setGuessCount(5);
+  setTestMode(false);
+  updateGuessCountColor();
 
   updateGuessCountLabel();
   hideWord();
-  setTestMode(true);
   resetGameImage();
 }
 
