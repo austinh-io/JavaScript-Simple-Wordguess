@@ -4,6 +4,7 @@ const buttonGroup = document.getElementById('button-group');
 const guessCountLabel = document.getElementById('guess-count');
 const theWordLabel = document.getElementById('word-display');
 const resetButton = document.getElementById('reset-button');
+const gameImage = document.getElementById('game-image');
 
 //Testing labels
 const theWordTestDisplay = document.getElementById('the-word');
@@ -51,6 +52,7 @@ function initButtonGroup() {
 
 function updateGuessCountLabel() {
   guessCountLabel.innerText = guessCount;
+  setGameImage(guessCount);
 }
 
 function updateTheWordLabel(text) {
@@ -142,10 +144,25 @@ function resetGuessCount() {
   updateGuessCountLabel();
 }
 
+function setGameImage(imageSequence) {
+  gameImage.src =
+    './assets/damage images/captioned images/Damage Image ' +
+    imageSequence +
+    '.png';
+}
+
+function resetGameImage() {
+  gameImage.src =
+    './assets/damage images/captioned images/Damage Image ' +
+    guessCount +
+    '.png';
+}
+
 function resetGame() {
   resetButtons();
   resetGuessCount();
   hideWord();
+  resetGameImage();
 
   gameEnabled = true;
 }
@@ -159,6 +176,7 @@ function initGame() {
   updateGuessCountLabel();
   hideWord();
   setTestMode(true);
+  resetGameImage();
 }
 
 initGame();
