@@ -65,21 +65,11 @@ function updateGuessCountColor() {
   const nearFail = ['#FF5C92', '#802E49'];
   const fail = ['#848484', '#525252'];
 
-  if (guessCount == initGuessCount) {
-    setGuessCountColor(started[0], started[1]);
-  }
-
-  if (guessCount < initGuessCount && guessCount > 0) {
+  if (guessCount == initGuessCount) setGuessCountColor(started[0], started[1]);
+  else if (guessCount == 1) setGuessCountColor(nearFail[0], nearFail[1]);
+  else if (guessCount < initGuessCount && guessCount > 0)
     setGuessCountColor(halfFail[0], halfFail[1]);
-  }
-
-  if (guessCount == 1) {
-    setGuessCountColor(nearFail[0], nearFail[1]);
-  }
-
-  if (guessCount <= 0) {
-    setGuessCountColor(fail[0], fail[1]);
-  }
+  else setGuessCountColor(fail[0], fail[1]);
 }
 
 function setGuessCountColor(color, bgColor) {
@@ -117,6 +107,16 @@ function processPlayerTurn(letterInput) {
     decrementGuessCount();
   }
 
+  // if (
+  //   !matchingLetterRecursive(
+  //     theWordSplit.length,
+  //     theWordSplit,
+  //     letterInputLower
+  //   )
+  // ) {
+  //   decrementGuessCount();
+  // }
+
   updateTheWordLabel(hiddenChars.join('').toUpperCase());
   updateGuessCountColor();
 }
@@ -130,6 +130,21 @@ function matchingLetter(word, letter) {
     }
   }
   return letterMatched;
+}
+
+function matchingLetterRecursive(n, word, letter) {
+  let letterMatched = false;
+
+  if (word[n] === letter) {
+    updateHiddenChars(n, letter);
+    letterMatched = true;
+  }
+
+  if (n < 0) {
+    return letterMatched;
+  }
+
+  matchingLetterRecursive(n - 1, word, letter);
 }
 
 function updateHiddenChars(index, char) {
