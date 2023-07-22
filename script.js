@@ -3,6 +3,7 @@
 const buttonGroup = document.getElementById('button-group');
 const guessCountLabel = document.getElementById('guess-count');
 const theWordLabel = document.getElementById('word-display');
+const resetButton = document.getElementById('reset-button');
 
 //Testing labels
 const theWordTestDisplay = document.getElementById('the-word');
@@ -58,10 +59,14 @@ function updateTheWordLabel(text) {
 
 function setWord(word) {
   theWord = word;
+}
+
+function setTestMode(bool) {
+  testingMode = bool;
 
   if (testingMode) {
     testingLabel.classList.remove('hidden');
-    theWordTestDisplay.innerText = word;
+    theWordTestDisplay.innerText = theWord;
   } else {
     testingLabel.classList.add('hidden');
   }
@@ -132,10 +137,6 @@ function resetButtons() {
   });
 }
 
-function resetWord() {
-  updateTheWordLabel(theWord);
-}
-
 function resetGuessCount() {
   guessCount = initGuessCount;
   updateGuessCountLabel();
@@ -143,7 +144,6 @@ function resetGuessCount() {
 
 function resetGame() {
   resetButtons();
-  resetWord();
   resetGuessCount();
   hideWord();
 
@@ -151,15 +151,14 @@ function resetGame() {
 }
 
 function initGame() {
-  initButtonGroup();
-  updateGuessCountLabel();
-
-  let resetButton = document.getElementById('reset-button');
   resetButton.addEventListener('click', resetGame);
+  initButtonGroup();
 
-  resetWord();
-  setWord('Apples?');
+  setWord('Bananas');
+
+  updateGuessCountLabel();
   hideWord();
+  setTestMode(true);
 }
 
 initGame();
