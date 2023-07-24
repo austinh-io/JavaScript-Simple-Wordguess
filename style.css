@@ -11,18 +11,6 @@ body {
   height: 98vh;
 }
 
-h1 {
-  font-size: 3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.4rem;
-  font-weight: 800;
-
-  color: rgb(255, 223, 43);
-
-  /* border: 1px solid yellow;
-  background-color: rgba(255, 255, 0, 0.253); */
-}
-
 hr.title-hr {
   border: 2px solid white;
   border-radius: 5px;
@@ -42,13 +30,13 @@ button {
   background-color: #465fec;
   color: white;
 
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 600;
 
   border: none;
   border-radius: 8px;
 
-  padding: 16px 32px;
+  padding: 10px;
   text-decoration: none;
 
   top: 0;
@@ -77,13 +65,38 @@ button:disabled:hover {
   align-items: center;
   justify-content: center;
 
+  flex-wrap: wrap;
+
   height: 100%;
+  width: 100%;
 
   padding-inline: 2%;
 }
 
+.title .container {
+  flex-direction: column;
+  align-items: start;
+}
+
 .title {
-  margin-bottom: 4rem;
+  padding-block: 10px;
+  padding-inline: 2%;
+  background-color: rgba(104, 155, 221, 0.199);
+  width: 100%;
+
+  backdrop-filter: blur 10px;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.title h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  font-weight: 800;
+
+  color: rgb(243, 163, 219);
 }
 
 .game-container {
@@ -105,8 +118,12 @@ button:disabled:hover {
   display: none;
 }
 
+.container:has(.main-content) {
+  height: 90%;
+}
+
 .main-content {
-  width: 1200px;
+  max-width: 900px;
 }
 
 .testing-label {
@@ -132,6 +149,7 @@ button:disabled:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: default;
 }
 
 #game-image-container {
@@ -204,6 +222,7 @@ button:disabled:hover {
 
 #word-display:hover {
   letter-spacing: 1.2rem;
+  cursor: default;
 }
 
 #guesses-left {
@@ -238,10 +257,6 @@ button:disabled:hover {
 }
 
 @media (max-width: 970px) {
-  h1 {
-    font-size: 3rem;
-  }
-
   hr.title-hr {
     border: 3px solid white;
     border-radius: 5px;
@@ -253,8 +268,8 @@ button:disabled:hover {
     padding: 8px 16px;
   }
 
-  .title {
-    margin-bottom: 2rem;
+  .title h1 {
+    font-size: 2.4rem;
   }
 
   #button-group {
@@ -267,10 +282,6 @@ button:disabled:hover {
 }
 
 @media (max-width: 650px) {
-  h1 {
-    font-size: 1.2rem;
-  }
-
   hr.title-hr {
     border: 2px solid white;
     border-radius: 5px;
@@ -286,8 +297,8 @@ button:disabled:hover {
     border: 2px solid rgba(255, 255, 255, 0.39);
   }
 
-  .title {
-    margin-bottom: 1.2rem;
+  .title h1 {
+    font-size: 1.2rem;
   }
 
   #button-group {
