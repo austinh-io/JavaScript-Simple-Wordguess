@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(21, 26, 36);
   color: rgb(198, 202, 211);
   height: 98vh;
@@ -65,29 +67,40 @@ button:disabled:hover {
   align-items: center;
   justify-content: center;
 
-  flex-wrap: wrap;
-
   height: 100%;
   width: 100%;
 
   padding-inline: 2%;
 }
 
-.title .container {
-  flex-direction: column;
-  align-items: start;
+.container:has(.main-content) {
+  height: 90%;
 }
 
 .title {
+  font-family: 'Archivo', sans-serif;
+
   padding-block: 10px;
   padding-inline: 2%;
   background-color: rgba(104, 155, 221, 0.199);
   width: 100%;
 
-  backdrop-filter: blur 10px;
+  backdrop-filter: blur(10px);
+
+  border: 1px rgba(255, 255, 255, 0.6);
+  border-style: none none solid none;
+
   position: sticky;
   top: 0;
   left: 0;
+}
+
+.title::before {
+}
+
+.title .container {
+  flex-direction: column;
+  align-items: start;
 }
 
 .title h1 {
@@ -103,7 +116,6 @@ button:disabled:hover {
   border: 5px solid rgba(255, 255, 255, 0.39);
   border-radius: 16px;
   padding: 2%;
-  max-width: 1000px;
 }
 
 .game-info-container {
@@ -111,15 +123,10 @@ button:disabled:hover {
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 .hidden {
   display: none;
-}
-
-.container:has(.main-content) {
-  height: 90%;
 }
 
 .main-content {
@@ -256,7 +263,7 @@ button:disabled:hover {
   background-color: #f73861;
 }
 
-@media (max-width: 970px) {
+@media (max-width: 970px) or (max-height: 1200px) {
   hr.title-hr {
     border: 3px solid white;
     border-radius: 5px;
@@ -281,7 +288,7 @@ button:disabled:hover {
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 650px) and (max-height: 1020px) {
   hr.title-hr {
     border: 2px solid white;
     border-radius: 5px;
@@ -319,5 +326,32 @@ button:disabled:hover {
   #guesses-left {
     font-size: 1rem;
     font-weight: 500;
+  }
+
+  #category {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-height: 800px) and (min-width: 650px) {
+  button {
+    font-size: 1.2rem;
+    padding: 10px 26px;
+  }
+
+  #button-group {
+    grid-template-columns: repeat(auto-fill, minmax(3rem, auto));
+  }
+
+  #main-game-info {
+    flex-direction: row-reverse;
+  }
+
+  #word-display {
+    flex: 8;
+  }
+
+  #game-image-container {
+    flex: 6;
   }
 }
