@@ -12,8 +12,8 @@ const theWordTestDisplay = document.getElementById('the-word');
 const testingLabel = document.getElementsByClassName('testing-label')[0];
 
 let buttons = [];
-// let inputLetters = [];
 let hiddenChars = [];
+let listOfWords = new Array();
 
 let gameEnabled = true;
 let testingMode = false;
@@ -26,8 +26,8 @@ let guessCount = 0;
 
 function onButtonClicked() {
   if (gameEnabled) {
-    processPlayerTurn(this.innerText);
     this.disabled = true;
+    processPlayerTurn(this.innerText);
   }
 }
 
@@ -235,20 +235,19 @@ function resetGame() {
   gameEnabled = true;
 }
 
-let listOfWords = new Array();
-
 async function catchWordList() {
   const response = await fetch('./wordList.json');
   const wordListObj = await response.json();
 
-  listOfWords.push(wordListObj);
+  listOfWords = [...wordListObj];
+  console.log(listOfWords);
 }
 
 function getWord() {
-  let randomWordIndex = getRandomInt(listOfWords[0].length);
+  let randomWordIndex = getRandomInt(listOfWords.length);
 
-  theWord = listOfWords[0][randomWordIndex].word;
-  theCategory = listOfWords[0][randomWordIndex].categories[0];
+  theWord = listOfWords[randomWordIndex].word;
+  theCategory = listOfWords[randomWordIndex].categories[0];
 }
 
 function getRandomInt(max) {
