@@ -1,0 +1,62 @@
+[
+  {
+    "id": 0,
+    "word": "Apple",
+    "categories": ["Food"],
+    "tags": ["Fruit"]
+  },
+  {
+    "id": 1,
+    "word": "Banana",
+    "categories": ["Food"],
+    "tags": ["Fruit"]
+  },
+  {
+    "id": 2,
+    "word": "Orange",
+    "categories": ["Food"],
+    "tags": ["Fruit"]
+  },
+  {
+    "id": 3,
+    "word": "Sheep",
+    "categories": ["Animals"],
+    "tags": ["Farm"]
+  },
+  {
+    "id": 4,
+    "word": "Cat",
+    "categories": ["Animals"],
+    "tags": ["Pet"]
+  },
+  {
+    "id": 5,
+    "word": "Dog",
+    "categories": ["Animals"],
+    "tags": ["Pet"]
+  },
+  {
+    "id": 6,
+    "word": "Car",
+    "categories": ["Vehicles"],
+    "tags": ["Transportation"]
+  },
+  {
+    "id": 7,
+    "word": "Airplane",
+    "categories": ["Vehicles"],
+    "tags": ["Transportation"]
+  },
+  {
+    "id": 8,
+    "word": "Boat",
+    "categories": ["Vehicles"],
+    "tags": ["Transportation"]
+  },
+  {
+    "id": 9,
+    "word": "Computer",
+    "categories": ["Electronics"],
+    "tags": [""]
+  }
+]

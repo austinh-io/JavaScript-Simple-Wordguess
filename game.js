@@ -3,6 +3,7 @@
 const buttonGroup = document.getElementById('button-group');
 const guessCountLabel = document.getElementById('guess-count');
 const theWordLabel = document.getElementById('word-display');
+const categoryLabel = document.getElementById('category-label');
 const resetButton = document.getElementById('reset-button');
 const gameImage = document.getElementById('game-image');
 
@@ -11,16 +12,24 @@ const theWordTestDisplay = document.getElementById('the-word');
 const testingLabel = document.getElementsByClassName('testing-label')[0];
 
 let buttons = [];
-let inputLetters = [];
+// let inputLetters = [];
 let hiddenChars = [];
 
 let gameEnabled = true;
 let testingMode = false;
 
 let theWord = '';
+let theCategory = '';
 
 let initGuessCount = 0;
 let guessCount = 0;
+
+function onButtonClicked() {
+  if (gameEnabled) {
+    processPlayerTurn(this.innerText);
+    this.disabled = true;
+  }
+}
 
 function createButton(letter) {
   const buttonElement = document.createElement('button');
@@ -59,17 +68,41 @@ function updateTheWordLabel(text) {
   theWordLabel.innerText = text;
 }
 
-function updateGuessCountColor() {
-  const started = ['#4ABAF7', '#004C75'];
-  const halfFail = ['#26FFB0', '#398066'];
-  const nearFail = ['#FF5C92', '#802E49'];
-  const fail = ['#848484', '#525252'];
+const guessCountColors = {
+  startedPrimary: '#4ABAF7',
+  startedBackground: '#004C75',
 
-  if (guessCount == initGuessCount) setGuessCountColor(started[0], started[1]);
-  else if (guessCount == 1) setGuessCountColor(nearFail[0], nearFail[1]);
+  halfFailedPrimary: '#26FFB0',
+  halfFailedBackground: '#398066',
+
+  nearFailedPrimary: '#FF5C92',
+  nearFailedBackground: '#802E49',
+
+  failedPrimary: '#848484',
+  failedBackground: '#525252',
+};
+
+function updateGuessCountColor() {
+  if (guessCount == initGuessCount)
+    setGuessCountColor(
+      guessCountColors.startedPrimary,
+      guessCountColors.startedBackground
+    );
+  else if (guessCount == 1)
+    setGuessCountColor(
+      guessCountColors.nearFailedPrimary,
+      guessCountColors.nearFailedBackground
+    );
   else if (guessCount < initGuessCount && guessCount > 0)
-    setGuessCountColor(halfFail[0], halfFail[1]);
-  else setGuessCountColor(fail[0], fail[1]);
+    setGuessCountColor(
+      guessCountColors.halfFailedPrimary,
+      guessCountColors.halfFailedBackground
+    );
+  else
+    setGuessCountColor(
+      guessCountColors.failedPrimary,
+      guessCountColors.failedBackground
+    );
 }
 
 function setGuessCountColor(color, bgColor) {
@@ -77,9 +110,9 @@ function setGuessCountColor(color, bgColor) {
   guessCountLabel.style.backgroundColor = bgColor;
 }
 
-function setWord(word) {
-  theWord = word;
-}
+// function setWord(word) {
+//   theWord = word;
+// }
 
 function setTestMode(bool) {
   testingMode = bool;
@@ -92,13 +125,6 @@ function setTestMode(bool) {
   }
 }
 
-function onButtonClicked() {
-  if (gameEnabled) {
-    processPlayerTurn(this.innerText);
-    this.disabled = true;
-  }
-}
-
 function processPlayerTurn(letterInput) {
   let theWordSplit = theWord.toLowerCase().split('');
   let letterInputLower = String(letterInput).toLowerCase();
@@ -107,18 +133,23 @@ function processPlayerTurn(letterInput) {
     decrementGuessCount();
   }
 
-  // if (
-  //   !matchingLetterRecursive(
-  //     theWordSplit.length,
-  //     theWordSplit,
-  //     letterInputLower
-  //   )
-  // ) {
-  //   decrementGuessCount();
-  // }
-
   updateTheWordLabel(hiddenChars.join('').toUpperCase());
   updateGuessCountColor();
+  checkPlayerProgress();
+}
+
+function checkPlayerProgress() {
+  if (gameEnabled) {
+    if (theWord.toLowerCase() === hiddenChars.join('').toLowerCase()) {
+      alert('You are winner!');
+      gameEnabled = false;
+    }
+
+    if (guessCount == 0) {
+      alert('You lost!');
+      gameEnabled = false;
+    }
+  }
 }
 
 function matchingLetter(word, letter) {
@@ -130,21 +161,6 @@ function matchingLetter(word, letter) {
     }
   }
   return letterMatched;
-}
-
-function matchingLetterRecursive(n, word, letter) {
-  let letterMatched = false;
-
-  if (word[n] === letter) {
-    updateHiddenChars(n, letter);
-    letterMatched = true;
-  }
-
-  if (n < 0) {
-    return letterMatched;
-  }
-
-  matchingLetterRecursive(n - 1, word, letter);
 }
 
 function updateHiddenChars(index, char) {
@@ -208,20 +224,54 @@ function resetGameImage() {
 }
 
 function resetGame() {
+  getWord();
   resetButtons();
   resetGuessCount();
   hideWord();
   resetGameImage();
   updateGuessCountColor();
+  categoryLabel.innerText = theCategory;
 
   gameEnabled = true;
 }
 
-function initGame() {
+let listOfWords = new Array();
+
+async function catchWordList() {
+  const response = await fetch('./wordList.json');
+  const wordListObj = await response.json();
+
+  listOfWords.push(wordListObj);
+}
+
+function getWord() {
+  let randomWordIndex = getRandomInt(listOfWords[0].length);
+
+  theWord = listOfWords[0][randomWordIndex].word;
+  theCategory = listOfWords[0][randomWordIndex].categories[0];
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function setWord(input) {
+  console.log('3 setWord');
+
+  theWord = input;
+  console.log('3 ' + theWord);
+}
+
+async function initGame() {
+  await catchWordList();
+
+  getWord();
+
+  categoryLabel.innerText = theCategory;
+
   resetButton.addEventListener('click', resetGame);
   initButtonGroup();
 
-  setWord('Bananas');
   setGuessCount(5);
   setTestMode(false);
   updateGuessCountColor();
@@ -229,6 +279,8 @@ function initGame() {
   updateGuessCountLabel();
   hideWord();
   resetGameImage();
+
+  console.log('init ' + theWord);
 }
 
 initGame();

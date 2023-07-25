@@ -10,10 +10,30 @@
 
     <link
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+
+    <link
+      rel="stylesheet"
       href="style.css"
     />
+    <link
+      rel="stylesheet"
+      href="nav.css"
+    />
+
     <script
-      src="script.js"
+      src="menu.js"
+      defer
+    ></script>
+
+    <script
+      src="game.js"
+      defer
+    ></script>
+    <script
+      type="text/javascript"
+      src="wordList.json"
       defer
     ></script>
   </head>
@@ -24,6 +44,29 @@
         <hr class="title-hr" />
       </div>
     </div>
+
+    <!-- <div class="nav-container">
+      <nav class="topnav">
+        <a
+          href="#home"
+          class="active"
+          >Logo</a
+        >
+        <div id="myLinks">
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+        </div>
+
+        <a
+          href="javascript:void(0);"
+          class="icon"
+          onclick="myFunction()"
+        >
+          <span class="material-symbols-outlined"> menu </span>
+        </a>
+      </nav>
+    </div> -->
 
     <div class="container">
       <div class="main-content">
@@ -55,13 +98,13 @@
             </div>
           </div>
           <div id="button-group"></div>
-          <button
-            id="reset-button"
-            class="button"
-          >
-            Reset
-          </button>
         </div>
+        <button
+          id="reset-button"
+          class="button"
+        >
+          Reset
+        </button>
       </div>
     </div>
   </body>
