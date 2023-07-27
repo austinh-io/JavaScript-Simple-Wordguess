@@ -213,7 +213,7 @@ function resetGuessCount() {
 
 function setGameImage(imageSequence) {
   gameDisplay.src =
-    './assets/damage images/captioned images/Damage Image ' +
+    '../assets/damage images/captioned images/Damage Image ' +
     imageSequence +
     '.png';
 }
@@ -225,7 +225,7 @@ function setGuessCount(guesses) {
 
 function resetGameImage() {
   gameDisplay.src =
-    './assets/damage images/captioned images/Damage Image ' +
+    '../assets/damage images/captioned images/Damage Image ' +
     guessCount +
     '.png';
 }
@@ -245,7 +245,7 @@ function resetGame() {
 }
 
 async function catchWordList() {
-  const response = await fetch('./wordList.json');
+  const response = await fetch('../data/wordList.json');
   const wordListObj = await response.json();
 
   listOfWords = [...wordListObj];
