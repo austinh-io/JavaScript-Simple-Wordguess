@@ -63,14 +63,12 @@ function setGameState() {
   console.log(gameEnabled);
   if (gameEnabled) {
     if (theWord.toLowerCase() === hiddenChars.join('').toLowerCase()) {
-      // alert('You are winner!');
       winModal.showModal();
       console.log('You are winner!');
       gameEnabled = false;
     }
 
     if (guessCount === 0) {
-      // alert('You lost!');
       loseModal.showModal();
       console.log('You lost!');
       gameEnabled = false;
