@@ -136,6 +136,28 @@ button:disabled:hover {
   width: fit-content;
 }
 
+.reset-button {
+  max-width: 8rem;
+  margin-top: 2rem;
+  background-color: #f73861;
+}
+
+.modal {
+  padding: 1rem;
+  max-width: 50ch;
+
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: rgba(0, 0, 0, 0.6);
+  color: rgb(233, 233, 233);
+  backdrop-filter: blur(16px);
+}
+
 #main-game-info {
   display: flex;
   flex-direction: column;
@@ -247,12 +269,6 @@ button:disabled:hover {
 
   /* border: 1px solid red;
   background-color: rgba(255, 0, 0, 0.226); */
-}
-
-#reset-button {
-  max-width: 8rem;
-  margin-top: 2rem;
-  background-color: #f73861;
 }
 
 @media (max-width: 970px) or (max-height: 1200px) {

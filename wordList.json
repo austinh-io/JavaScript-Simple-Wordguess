@@ -2,61 +2,71 @@
   {
     "id": 0,
     "word": "Apple",
-    "categories": ["Food"],
-    "tags": ["Fruit"]
+    "category": "Food",
+    "subcategories": ["Fruit"],
+    "tags": []
   },
   {
     "id": 1,
     "word": "Banana",
-    "categories": ["Food"],
+    "category": "Food",
+    "subcategories": ["Food"],
     "tags": ["Fruit"]
   },
   {
     "id": 2,
     "word": "Orange",
-    "categories": ["Food"],
-    "tags": ["Fruit"]
+    "category": "Food",
+    "subcategories": ["Fruit"],
+    "tags": []
   },
   {
     "id": 3,
     "word": "Sheep",
-    "categories": ["Animals"],
+    "category": "Animals",
+    "subcategories": ["Farm Animals"],
     "tags": ["Farm"]
   },
   {
     "id": 4,
     "word": "Cat",
-    "categories": ["Animals"],
+    "category": "Animals",
+    "subcategories": ["House Pets"],
     "tags": ["Pet"]
   },
   {
     "id": 5,
     "word": "Dog",
-    "categories": ["Animals"],
+    "category": "Animals",
+    "subcategories": ["House Pets"],
     "tags": ["Pet"]
   },
   {
     "id": 6,
     "word": "Car",
-    "categories": ["Vehicles"],
-    "tags": ["Transportation"]
+    "category": "Transportation",
+    "subcategories": ["Land Vehicles", "Vehicles"],
+    "tags": []
   },
   {
     "id": 7,
     "word": "Airplane",
-    "categories": ["Vehicles"],
-    "tags": ["Transportation"]
+    "category": "Transportation",
+    "subcategories": ["Air Vehicles", "Vehicles"],
+    "tags": []
   },
   {
     "id": 8,
     "word": "Boat",
-    "categories": ["Vehicles"],
-    "tags": ["Transportation"]
+    "category": "Transportation",
+    "subcategories": ["Water Vehicles", "Vehicles"],
+    "tags": []
   },
   {
     "id": 9,
     "word": "Computer",
-    "categories": ["Electronics"],
+    "category": "Electronics",
+    "subcategories": [],
     "tags": [""]
   }
 ]

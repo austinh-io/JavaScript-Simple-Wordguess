@@ -4,8 +4,11 @@ const buttonGroup = document.getElementById('button-group');
 const guessCountLabel = document.getElementById('guess-count');
 const theWordLabel = document.getElementById('word-display');
 const categoryLabel = document.getElementById('category-label');
-const resetButton = document.getElementById('reset-button');
+const resetButtons = document.getElementsByClassName('reset-button');
 const gameImage = document.getElementById('game-image');
+
+const winModal = document.getElementById('win-modal');
+const loseModal = document.getElementById('lose-modal');
 
 //Testing labels
 const theWordTestDisplay = document.getElementById('the-word');
@@ -28,6 +31,50 @@ function onButtonClicked() {
   if (gameEnabled) {
     this.disabled = true;
     processPlayerTurn(this.innerText);
+  }
+}
+
+function processPlayerTurn(letterInput) {
+  let theWordSplit = theWord.toLowerCase().split('');
+  let letterInputLower = String(letterInput).toLowerCase();
+
+  if (!matchingLetter(theWordSplit, letterInputLower)) {
+    decrementGuessCount();
+  }
+
+  updateTheWordLabel(hiddenChars.join('').toUpperCase());
+  updateGuessCountColor();
+  setGameState();
+}
+
+function matchingLetter(word, letter) {
+  let letterMatched = false;
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === letter) {
+      updateHiddenChars(i, letter);
+      letterMatched = true;
+    }
+  }
+  return letterMatched;
+}
+
+function setGameState() {
+  console.log(guessCount);
+  console.log(gameEnabled);
+  if (gameEnabled) {
+    if (theWord.toLowerCase() === hiddenChars.join('').toLowerCase()) {
+      // alert('You are winner!');
+      winModal.showModal();
+      console.log('You are winner!');
+      gameEnabled = false;
+    }
+
+    if (guessCount === 0) {
+      // alert('You lost!');
+      loseModal.showModal();
+      console.log('You lost!');
+      gameEnabled = false;
+    }
   }
 }
 
@@ -56,6 +103,12 @@ function initButtonGroup() {
 
   for (let i = 0; i < lettersInAlphabet; i++) {
     createButton(String.fromCharCode(i + latinScriptUppercase));
+  }
+}
+
+function initResetButtons() {
+  for (let i = 0; i < resetButtons.length; i++) {
+    resetButtons[i].addEventListener('click', resetGame);
   }
 }
 
@@ -110,10 +163,6 @@ function setGuessCountColor(color, bgColor) {
   guessCountLabel.style.backgroundColor = bgColor;
 }
 
-// function setWord(word) {
-//   theWord = word;
-// }
-
 function setTestMode(bool) {
   testingMode = bool;
 
@@ -125,44 +174,6 @@ function setTestMode(bool) {
   }
 }
 
-function processPlayerTurn(letterInput) {
-  let theWordSplit = theWord.toLowerCase().split('');
-  let letterInputLower = String(letterInput).toLowerCase();
-
-  if (!matchingLetter(theWordSplit, letterInputLower)) {
-    decrementGuessCount();
-  }
-
-  updateTheWordLabel(hiddenChars.join('').toUpperCase());
-  updateGuessCountColor();
-  checkPlayerProgress();
-}
-
-function checkPlayerProgress() {
-  if (gameEnabled) {
-    if (theWord.toLowerCase() === hiddenChars.join('').toLowerCase()) {
-      alert('You are winner!');
-      gameEnabled = false;
-    }
-
-    if (guessCount == 0) {
-      alert('You lost!');
-      gameEnabled = false;
-    }
-  }
-}
-
-function matchingLetter(word, letter) {
-  let letterMatched = false;
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === letter) {
-      updateHiddenChars(i, letter);
-      letterMatched = true;
-    }
-  }
-  return letterMatched;
-}
-
 function updateHiddenChars(index, char) {
   hiddenChars[index] = char;
 }
@@ -170,10 +181,6 @@ function updateHiddenChars(index, char) {
 function decrementGuessCount() {
   if (guessCount > 0) {
     guessCount--;
-  }
-
-  if (guessCount <= 0) {
-    gameEnabled = false;
   }
 
   updateGuessCountLabel();
@@ -193,7 +200,7 @@ function isLetter(string) {
   return string.length === 1 && string.match(/[a-z]/i);
 }
 
-function resetButtons() {
+function resetGameButtons() {
   buttons.forEach((button) => {
     button.disabled = false;
   });
@@ -225,12 +232,14 @@ function resetGameImage() {
 
 function resetGame() {
   getWord();
-  resetButtons();
+  resetGameButtons();
   resetGuessCount();
   hideWord();
   resetGameImage();
   updateGuessCountColor();
   categoryLabel.innerText = theCategory;
+  loseModal.close();
+  winModal.close();
 
   gameEnabled = true;
 }
@@ -240,25 +249,17 @@ async function catchWordList() {
   const wordListObj = await response.json();
 
   listOfWords = [...wordListObj];
-  console.log(listOfWords);
 }
 
 function getWord() {
   let randomWordIndex = getRandomInt(listOfWords.length);
 
   theWord = listOfWords[randomWordIndex].word;
-  theCategory = listOfWords[randomWordIndex].categories[0];
+  theCategory = listOfWords[randomWordIndex].category;
 }
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
-}
-
-function setWord(input) {
-  console.log('3 setWord');
-
-  theWord = input;
-  console.log('3 ' + theWord);
 }
 
 async function initGame() {
@@ -268,18 +269,16 @@ async function initGame() {
 
   categoryLabel.innerText = theCategory;
 
-  resetButton.addEventListener('click', resetGame);
   initButtonGroup();
+  initResetButtons();
 
-  setGuessCount(5);
+  setGuessCount(2);
   setTestMode(false);
   updateGuessCountColor();
 
   updateGuessCountLabel();
   hideWord();
   resetGameImage();
-
-  console.log('init ' + theWord);
 }
 
 initGame();

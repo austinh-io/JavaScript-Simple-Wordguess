@@ -99,12 +99,31 @@
           </div>
           <div id="button-group"></div>
         </div>
-        <button
-          id="reset-button"
-          class="button"
+        <button class="button reset-button">Reset</button>
+
+        <dialog
+          class="modal"
+          id="win-modal"
         >
-          Reset
-        </button>
+          <h2>You Win!</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
+            necessitatibus!
+          </p>
+          <button class="button reset-button">Reset</button>
+        </dialog>
+
+        <dialog
+          class="modal"
+          id="lose-modal"
+        >
+          <h2>You Lost!</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
+            necessitatibus!
+          </p>
+          <button class="button reset-button">Reset</button>
+        </dialog>
       </div>
     </div>
   </body>
