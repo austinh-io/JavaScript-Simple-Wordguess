@@ -158,6 +158,11 @@ button:disabled:hover {
   backdrop-filter: blur(16px);
 }
 
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
 #main-game-info {
   display: flex;
   flex-direction: column;
