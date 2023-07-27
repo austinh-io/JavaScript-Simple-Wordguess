@@ -13,11 +13,6 @@ body {
   height: 98vh;
 }
 
-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-}
-
 hr.title-hr {
   border: 2px solid white;
   border-radius: 5px;
@@ -163,6 +158,42 @@ button:disabled:hover {
   backdrop-filter: blur(16px);
 }
 
+dialog.modal {
+  pointer-events: none;
+}
+
+dialog.modal[open] {
+  pointer-events: inherit;
+  animation: modalFadeIn 0.4s ease normal;
+}
+
+dialog.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  animation: modalFadeIn 0.4s ease normal;
+}
+
+#win-modal.modal {
+  border: 3px solid rgb(108, 255, 108);
+}
+
+#lose-modal.modal {
+  border: 3px solid rgb(255, 56, 56);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+  }
+}
+
 .entity-container {
   width: 18%;
   position: absolute;
@@ -271,7 +302,7 @@ button:disabled:hover {
 
   border-radius: 8px;
 
-  padding: 2rem 1rem;
+  padding: 0.8rem 1rem;
 
   transition: letter-spacing 0.4s ease-out;
 }
