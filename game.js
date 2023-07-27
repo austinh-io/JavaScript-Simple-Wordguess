@@ -5,7 +5,7 @@ const guessCountLabel = document.getElementById('guess-count');
 const theWordLabel = document.getElementById('word-display');
 const categoryLabel = document.getElementById('category-label');
 const resetButtons = document.getElementsByClassName('reset-button');
-const gameImage = document.getElementById('game-image');
+const gameDisplay = document.getElementById('game-display');
 
 const winModal = document.getElementById('win-modal');
 const loseModal = document.getElementById('lose-modal');
@@ -212,7 +212,7 @@ function resetGuessCount() {
 }
 
 function setGameImage(imageSequence) {
-  gameImage.src =
+  gameDisplay.src =
     './assets/damage images/captioned images/Damage Image ' +
     imageSequence +
     '.png';
@@ -224,7 +224,7 @@ function setGuessCount(guesses) {
 }
 
 function resetGameImage() {
-  gameImage.src =
+  gameDisplay.src =
     './assets/damage images/captioned images/Damage Image ' +
     guessCount +
     '.png';

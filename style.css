@@ -13,6 +13,11 @@ body {
   height: 98vh;
 }
 
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
 hr.title-hr {
   border: 2px solid white;
   border-radius: 5px;
@@ -158,9 +163,29 @@ button:disabled:hover {
   backdrop-filter: blur(16px);
 }
 
-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+.entity-container {
+  width: 18%;
+  position: absolute;
+}
+
+.entity-container:has(#enemy-body) {
+  width: 24%;
+}
+
+.player-container {
+  right: 0;
+  bottom: 0;
+  margin-right: 2rem;
+}
+
+#player-body {
+  transform: scale(-1, 1);
+}
+
+.enemy-container {
+  left: 0;
+  bottom: 0;
+  margin-left: 2rem;
 }
 
 #main-game-info {
@@ -178,7 +203,7 @@ dialog::backdrop {
   cursor: default;
 }
 
-#game-image-container {
+#game-display-container {
   display: flex;
 
   align-items: center;
@@ -188,36 +213,41 @@ dialog::backdrop {
   aspect-ratio: 21/9;
 
   position: relative;
+  background-image: url(assets/environments/SVG/cityscape.svg);
+  background-size: cover;
 
-  border: 3px solid white;
+  /* border: 3px solid white; */
   border-radius: 10px;
   overflow: hidden;
 }
 
-#game-image-caption-background {
+#game-display-caption-background {
   display: flex;
   align-items: center;
   justify-content: center;
 
   position: absolute;
 
-  background-color: #465fec86;
+  /* background-color: #465fec86; */
   width: 100%;
   height: 100%;
 }
 
-#game-image-caption-text {
+#game-display-caption-text {
   position: absolute;
   top: 10px;
-  font-size: 2rem;
-  color: rgb(255, 255, 255);
-  font-weight: 700;
+  font-size: 1.2rem;
+  color: rgb(161, 161, 161);
+  font-weight: 300;
+
+  text-transform: lowercase;
 }
 
-#game-image {
+#game-display {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  opacity: 10%;
 }
 
 #word-display {
