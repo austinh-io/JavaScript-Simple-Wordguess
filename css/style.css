@@ -91,8 +91,11 @@ button:disabled:hover {
   border-style: none none solid none;
 
   position: sticky;
+  margin-bottom: 50px;
   top: 0;
   left: 0;
+
+  z-index: -1;
 }
 
 .title .container {
@@ -362,7 +365,7 @@ dialog.modal::backdrop {
   }
 }
 
-@media (max-width: 650px) and (max-height: 1020px) {
+@media (max-width: 650px) and (max-height: 1600px) {
   hr.title-hr {
     border: 2px solid white;
     border-radius: 5px;
@@ -388,7 +391,7 @@ dialog.modal::backdrop {
     letter-spacing: 0.4rem;
   }
 
-  #game-image-container {
+  #game-display-container {
     overflow: hidden;
     width: 100%;
   }
@@ -421,7 +424,7 @@ dialog.modal::backdrop {
     flex: 8;
   }
 
-  #game-image-container {
+  #game-display-container {
     flex: 6;
   }
 }
