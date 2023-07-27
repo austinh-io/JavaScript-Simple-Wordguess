@@ -247,7 +247,7 @@ dialog.modal::backdrop {
   aspect-ratio: 21/9;
 
   position: relative;
-  background-image: url(../assets/environments/SVG/cityscape.svg);
+  background-image: url(../assets/environments/cityscape.svg);
   background-size: cover;
 
   /* border: 3px solid white; */
