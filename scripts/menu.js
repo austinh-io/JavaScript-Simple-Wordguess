@@ -1,9 +1,20 @@
-/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-function myFunction() {
-  let x = document.getElementById('myLinks');
-  if (x.style.display === 'block') {
-    x.style.display = 'none';
+const primaryNav = document.querySelector('.primary-navigation');
+const navToggle = document.querySelector('.mobile-nav-toggle');
+const navToggleOpen = document.querySelector('.mobile-nav-toggle-open');
+const navToggleClose = document.querySelector('.mobile-nav-toggle-close');
+
+navToggle.addEventListener('click', () => {
+  const visibility = primaryNav.getAttribute('data-visible');
+
+  if (visibility === 'false') {
+    primaryNav.setAttribute('data-visible', 'true');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggleClose.setAttribute('style', 'display: block');
+    navToggleOpen.setAttribute('style', 'display: none');
   } else {
-    x.style.display = 'block';
+    primaryNav.setAttribute('data-visible', false);
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggleClose.setAttribute('style', 'display: none');
+    navToggleOpen.setAttribute('style', 'display: block');
   }
-}
+});

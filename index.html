@@ -8,25 +8,43 @@
     />
     <title>WordGuess</title>
 
+    <!-- External Style Resources -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 
+    <!-- CSS -->
     <link
       rel="stylesheet"
       href="./css/style.css"
     />
     <link
       rel="stylesheet"
+      href="./css/responsiveStyles.css"
+    />
+    <link
+      rel="stylesheet"
       href="./css/nav.css"
     />
+    <link
+      rel="stylesheet"
+      href="./css/gameDisplay.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./css/modals.css"
+    />
 
+    <!-- JavaScript -->
     <script
       src="./scripts/menu.js"
       defer
     ></script>
-
     <script
       src="./scripts/game.js"
       defer
@@ -38,25 +56,87 @@
     ></script>
   </head>
   <body>
-    <div class="title">
-      <div class="container">
-        <h1>WordGuess</h1>
-        <hr class="title-hr" />
+    <header class="primary-header">
+      <div>
+        <a
+          href="#"
+          class="logo"
+        >
+          <span class="material-symbols-rounded logo-icon">
+            playing_cards
+          </span>
+          <h1 class="logo-text">WordGuess</h1>
+        </a>
       </div>
-    </div>
+
+      <button
+        class="mobile-nav-toggle"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Menu</span>
+        <span
+          class="material-symbols-rounded mobile-nav-toggle-icon mobile-nav-toggle-open"
+        >
+          menu
+        </span>
+        <span
+          class="material-symbols-rounded mobile-nav-toggle-icon mobile-nav-toggle-close"
+          style="display: none"
+        >
+          close
+        </span>
+      </button>
+
+      <nav>
+        <ul
+          id="primary-navigation"
+          class="primary-navigation"
+          data-visible="false"
+        >
+          <li class="active">
+            <a href="#"> Button 1 </a>
+          </li>
+          <li>
+            <a href="#"> Button 2 </a>
+          </li>
+          <li>
+            <a href="#"> Button 3 </a>
+          </li>
+          <li>
+            <button class="button reset-button">Reset</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
     <!-- <div class="nav-container">
-      <nav class="topnav">
+      <nav class="nav topnav">
         <a
-          href="#home"
+          href="#"
           class="active"
-          >Logo</a
         >
-        <div id="myLinks">
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
-          <a href="#about">About</a>
-        </div>
+          <div class="title">
+            <div class="container">
+              <h1>WordGuess</h1>
+            </div>
+          </div>
+        </a>
+
+        <ul
+          class="nav-link-list"
+          id="myLinks"
+        >
+          <li>
+            <a href="#"><button>Link 1</button></a>
+          </li>
+          <li>
+            <a href="#"><button>Link 2</button></a>
+          </li>
+          <li>
+            <a href="#"><button>Link 3</button></a>
+          </li>
+        </ul>
 
         <a
           href="javascript:void(0);"
@@ -67,6 +147,27 @@
         </a>
       </nav>
     </div> -->
+
+    <!-- <nav class="topnav">
+      <a
+        href="#home"
+        class="active"
+        >Logo</a
+      >
+      <div id="myLinks">
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+      </div>
+
+      <a
+        href="javascript:void(0);"
+        class="icon"
+        onclick="myFunction()"
+      >
+        <span class="material-symbols-outlined"> menu </span>
+      </a>
+    </nav> -->
 
     <div class="container">
       <div class="main-content">
@@ -115,7 +216,6 @@
           </div>
           <div id="button-group"></div>
         </div>
-        <button class="button reset-button">Reset</button>
 
         <dialog
           class="modal"

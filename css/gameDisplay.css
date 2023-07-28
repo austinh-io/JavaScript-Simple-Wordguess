@@ -1,0 +1,167 @@
+@import url('responsiveStyles.css');
+
+#game-display-container {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 21/9;
+
+  position: relative;
+  background-image: url(../assets/environments/cityscape.svg);
+  background-size: cover;
+
+  /* border: 3px solid white; */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#game-display-caption-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+
+  /* background-color: #465fec86; */
+  width: 100%;
+  height: 100%;
+}
+
+#game-display-caption-text {
+  position: absolute;
+  top: 10px;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.384);
+  padding: 0.2rem;
+  border-radius: 4px;
+  font-weight: 300;
+
+  text-transform: lowercase;
+  opacity: 60%;
+}
+
+#game-display {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 10%;
+}
+
+#main-game-info {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  margin-block: 2rem;
+}
+
+#sub-game-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+}
+
+#word-display {
+  overflow-wrap: break-word;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: fit-content;
+  width: 100%;
+
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.8rem;
+
+  color: rgb(119, 201, 255);
+  background-color: rgba(8, 102, 156, 0.521);
+
+  border-radius: 4px;
+
+  padding: 0.4rem;
+  margin-top: 1rem;
+
+  transition: letter-spacing 0.4s ease-out;
+}
+
+#word-display:hover {
+  letter-spacing: 1.2rem;
+  cursor: default;
+}
+
+#guesses-left {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#guess-count {
+  color: rgb(255, 92, 146);
+  font-weight: 700;
+  background-color: rgba(202, 11, 84, 0.356);
+  padding-inline: 1rem;
+  border-radius: 250px;
+}
+
+#category {
+  font-size: 0.8rem;
+}
+
+#category-label {
+  background-color: rgba(105, 83, 230, 0.363);
+  color: rgb(234, 204, 255);
+  font-weight: 700;
+  padding: 0.2rem 0.4rem;
+  border-radius: 100px;
+}
+
+.entity-container {
+  width: 18%;
+  position: absolute;
+}
+
+.entity-container:has(#enemy-body) {
+  width: 24%;
+}
+
+.player-container {
+  right: 0;
+  bottom: 0;
+  margin-right: 2rem;
+}
+
+#player-body {
+  transform: scale(-1, 1);
+}
+
+.enemy-container {
+  left: 0;
+  bottom: 0;
+  margin-left: 2rem;
+}
+
+#button-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1.8rem, auto));
+
+  position: relative;
+
+  gap: 1rem 0.2rem;
+}
+
+#button-group button {
+  aspect-ratio: 5/6;
+}
+
+.game-info-container {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+}

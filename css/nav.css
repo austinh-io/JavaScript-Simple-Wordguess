@@ -1,41 +1,221 @@
+/* @import url('responsiveStyles.css'); */
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.primary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+.primary-navigation {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+  background-color: hsl(0 0% 0% / 0.9);
+  align-items: center;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+@media (max-width: 35em) {
+  .primary-navigation {
+    gap: 2em;
+
+    position: fixed;
+    inset: 0 0 0 20%;
+
+    flex-direction: column;
+    padding: min(20vh, 6rem) 2rem;
+
+    transform: translateX(100%);
+    transition: transform 250ms ease-out;
+
+    align-items: start;
+  }
+
+  .primary-navigation[data-visible='true'] {
+    transform: translateX(0%);
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    z-index: 9000;
+    aspect-ratio: 1;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-nav-toggle:hover {
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    top: 2rem;
+  }
+
+  .mobile-nav-toggle-icon {
+    font-size: 2rem;
+  }
+}
+
+@supports (backdrop-filter: blur(100px)) {
+  .primary-navigation {
+    background-color: hsl(0 0% 0% / 0.6);
+    backdrop-filter: blur(100px);
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin: 2rem;
+
+  padding: 0.4rem;
+
+  border: 0.1rem solid white;
+  border-radius: 4px;
+}
+
+.logo-icon {
+  font-size: 1.6rem;
+  margin-right: 0.2rem;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+}
+
+.primary-header {
+  align-items: center;
+}
+
+.sr-only {
+  display: none;
+}
+
+.title {
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-block: 10px;
+  padding-inline: 2%;
+  background-color: rgba(104, 155, 221, 0.199);
+  width: 100%;
+
+  backdrop-filter: blur(10px);
+
+  border: 1px rgba(255, 255, 255, 0.6);
+  border-style: none none solid none;
+
+  position: sticky;
+  margin-bottom: 50px;
+  top: 0;
+  left: 0;
+
+  z-index: -1; */
+}
+
+.title .container {
+  /* flex-direction: column;
+  align-items: start;
+  padding: 0; */
+}
+
+.title h1 {
+  /* font-family: 'Archivo', sans-serif;
+
+  font-size: clamp(1rem, 30%, 7rem);
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  font-weight: 800;
+
+  color: rgb(243, 163, 219); */
+}
+
+/* .nav-container {
+  background-color: #333;
+  width: 100%;
+  padding-block: 0.4rem;
+  padding-inline: 2%;
+  margin-bottom: 1rem;
+}
+
+.nav {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-link-list {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+
+  gap: 0.6rem;
+  list-style-type: none;
+}
+
+.nav-link-list button {
+  padding-inline: 0.4rem;
+}
+
 /* Style the navigation menu */
 .topnav {
-  overflow: hidden;
+  /* overflow: hidden;
   background-color: #333;
-  position: relative;
+  position: relative; */
 }
 
 /* Hide the links inside the navigation menu (except for logo/home) */
 .topnav #myLinks {
-  display: none;
+  /* display: none; */
 }
 
 /* Style navigation menu links */
 .topnav a {
-  color: white;
+  /* color: white;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  display: block;
+  display: block; */
 }
 
 /* Style the hamburger menu */
 .icon {
-  display: block;
+  /* display: block;
   position: absolute;
   height: 100%;
   right: 0;
-  top: 0;
+  top: 0; */
 }
 
 /* Add a grey background color on mouse-over */
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  /* background-color: #ddd;
+  color: black; */
 }
 
 /* Style the active link (or home/logo) */
 .active {
-  background-color: #04aa6d;
-  color: white;
+  /* background-color: #04aa6d;
+  color: white; */
 }
