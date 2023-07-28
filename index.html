@@ -25,10 +25,6 @@
     />
     <link
       rel="stylesheet"
-      href="./css/responsiveStyles.css"
-    />
-    <link
-      rel="stylesheet"
       href="./css/nav.css"
     />
     <link
@@ -104,7 +100,15 @@
             <a href="#"> Button 3 </a>
           </li>
           <li>
-            <button class="button reset-button">Reset</button>
+            <button
+              class="button reset-button"
+              id="menu-reset-button"
+            >
+              <span class="material-symbols-outlined reset-button-icon">
+                replay
+              </span>
+              Reset
+            </button>
           </li>
         </ul>
       </nav>
@@ -167,7 +171,11 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
             necessitatibus!
           </p>
-          <button class="button reset-button">Reset</button>
+          <button class="button reset-button">
+            <span class="material-symbols-outlined reset-button-icon">
+              replay </span
+            >Reset
+          </button>
         </dialog>
 
         <dialog
@@ -179,7 +187,14 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
             necessitatibus!
           </p>
-          <button class="button reset-button">Reset</button>
+          <p class="game-end-word-reveal">
+            The word was <span id="game-end-modal-word">###</span>
+          </p>
+          <button class="button reset-button">
+            <span class="material-symbols-outlined reset-button-icon">
+              replay </span
+            >Reset
+          </button>
         </dialog>
       </div>
     </div>

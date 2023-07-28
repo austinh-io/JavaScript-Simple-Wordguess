@@ -7,8 +7,10 @@ const categoryLabel = document.getElementById('category-label');
 const resetButtons = document.getElementsByClassName('reset-button');
 const gameDisplay = document.getElementById('game-display');
 
+//Modal items
 const winModal = document.getElementById('win-modal');
 const loseModal = document.getElementById('lose-modal');
+const gameEndModalWord = document.getElementById('game-end-modal-word');
 
 //Testing labels
 const theWordTestDisplay = document.getElementById('the-word');
@@ -62,15 +64,15 @@ function setGameState() {
   console.log(guessCount);
   console.log(gameEnabled);
   if (gameEnabled) {
+    //Player Won
     if (theWord.toLowerCase() === hiddenChars.join('').toLowerCase()) {
       winModal.showModal();
-      console.log('You are winner!');
       gameEnabled = false;
     }
 
+    //Player Lost
     if (guessCount === 0) {
       loseModal.showModal();
-      console.log('You lost!');
       gameEnabled = false;
     }
   }
@@ -112,7 +114,6 @@ function initResetButtons() {
 
 function updateGuessCountLabel() {
   guessCountLabel.innerText = guessCount;
-  setGameImage(guessCount);
 }
 
 function updateTheWordLabel(text) {
@@ -209,23 +210,9 @@ function resetGuessCount() {
   updateGuessCountLabel();
 }
 
-function setGameImage(imageSequence) {
-  // gameDisplay.src =
-  //   '../assets/damage images/captioned images/Damage Image ' +
-  //   imageSequence +
-  //   '.png';
-}
-
 function setGuessCount(guesses) {
   initGuessCount = guesses;
   guessCount = guesses;
-}
-
-function resetGameImage() {
-  // gameDisplay.src =
-  //   '../assets/damage images/captioned images/Damage Image ' +
-  //   guessCount +
-  //   '.png';
 }
 
 function resetGame() {
@@ -233,7 +220,6 @@ function resetGame() {
   resetGameButtons();
   resetGuessCount();
   hideWord();
-  resetGameImage();
   updateGuessCountColor();
   categoryLabel.innerText = theCategory;
   loseModal.close();
@@ -254,6 +240,7 @@ function getWord() {
 
   theWord = listOfWords[randomWordIndex].word;
   theCategory = listOfWords[randomWordIndex].category;
+  gameEndModalWord.innerText = theWord;
 }
 
 function getRandomInt(max) {
@@ -276,7 +263,6 @@ async function initGame() {
 
   updateGuessCountLabel();
   hideWord();
-  resetGameImage();
 }
 
 initGame();
