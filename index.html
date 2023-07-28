@@ -166,35 +166,55 @@
           class="modal"
           id="win-modal"
         >
-          <h2>You Win!</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-            necessitatibus!
-          </p>
-          <button class="button reset-button">
-            <span class="material-symbols-outlined reset-button-icon">
-              replay </span
-            >Reset
-          </button>
+          <div class="modal-header-container">
+            <div class="modal-header">
+              <span class="material-symbols-rounded modal-header-icon">
+                sentiment_very_satisfied
+              </span>
+              <h3>You Win!</h3>
+            </div>
+          </div>
+
+          <div class="modal-body">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
+              necessitatibus!
+            </p>
+            <button class="button reset-button">
+              <span class="material-symbols-outlined reset-button-icon">
+                replay </span
+              >Reset
+            </button>
+          </div>
         </dialog>
 
         <dialog
           class="modal"
           id="lose-modal"
         >
-          <h2>You Lost!</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-            necessitatibus!
-          </p>
-          <p class="game-end-word-reveal">
-            The word was <span id="game-end-modal-word">###</span>
-          </p>
-          <button class="button reset-button">
-            <span class="material-symbols-outlined reset-button-icon">
-              replay </span
-            >Reset
-          </button>
+          <div class="modal-header-container">
+            <div class="modal-header">
+              <span class="material-symbols-rounded modal-header-icon">
+                sentiment_dissatisfied
+              </span>
+              <h3>You Lost!</h3>
+            </div>
+          </div>
+
+          <div class="modal-body">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
+              necessitatibus!
+            </p>
+            <p class="game-end-word-reveal">
+              The word was <span id="game-end-modal-word">###</span>
+            </p>
+            <button class="button reset-button">
+              <span class="material-symbols-outlined reset-button-icon">
+                replay </span
+              >Reset
+            </button>
+          </div>
         </dialog>
       </div>
     </div>

@@ -1,6 +1,7 @@
 .modal {
-  padding: 1rem;
-  max-width: 50ch;
+  padding-inline: 0;
+  padding-block: 0 1rem;
+  max-width: 100%;
 
   top: 50%;
   left: 50%;
@@ -38,7 +39,7 @@ dialog.modal p {
 }
 
 #lose-modal.modal {
-  border: 3px solid rgb(255, 56, 56);
+  border: 3px solid rgb(215, 56, 255);
 }
 
 @keyframes modalFadeIn {
@@ -52,4 +53,38 @@ dialog.modal p {
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
   }
+}
+
+.modal-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: rgb(28, 89, 180);
+}
+
+#lose-modal.modal .modal-header-container {
+  background-color: rgb(105, 31, 139);
+}
+
+#win-modal.modal .modal-header-container {
+  background-color: rgb(25, 116, 70);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal-header h3 {
+  font-size: 1.4rem;
+}
+
+.modal-header-icon {
+  font-size: 1.6rem;
+  margin-right: 0.4rem;
+}
+
+.modal-body {
+  padding: 1rem;
 }
