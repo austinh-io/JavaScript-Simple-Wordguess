@@ -15,8 +15,31 @@ a {
   justify-content: space-between;
 }
 
+.logo {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.1s ease-out;
+}
+
+.logo:hover {
+  color: rgb(66, 132, 255);
+  border-color: rgb(66, 132, 255);
+}
+
+.logo-text {
+}
+
 .mobile-nav-toggle {
   display: none;
+  transition: all 0.1s ease-out;
+}
+
+.mobile-nav-toggle:hover {
+  color: rgb(66, 132, 255);
 }
 
 .primary-navigation {

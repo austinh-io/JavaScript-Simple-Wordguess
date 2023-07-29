@@ -1,7 +1,6 @@
 .modal {
   padding-inline: 0;
   padding-block: 0 1rem;
-  max-width: 100%;
 
   top: 50%;
   left: 50%;
@@ -17,6 +16,7 @@
 
 dialog.modal {
   pointer-events: none;
+  width: 98vw;
 }
 
 dialog.modal[open] {
@@ -35,11 +35,11 @@ dialog.modal p {
 }
 
 #win-modal.modal {
-  border: 3px solid rgb(108, 255, 108);
+  border: 3px solid rgb(58, 169, 69);
 }
 
 #lose-modal.modal {
-  border: 3px solid rgb(215, 56, 255);
+  border: 3px solid rgb(246, 83, 86);
 }
 
 @keyframes modalFadeIn {
@@ -63,11 +63,11 @@ dialog.modal p {
 }
 
 #lose-modal.modal .modal-header-container {
-  background-color: rgb(105, 31, 139);
+  background-color: rgb(135, 27, 48);
 }
 
 #win-modal.modal .modal-header-container {
-  background-color: rgb(25, 116, 70);
+  background-color: rgb(54, 143, 70);
 }
 
 .modal-header {
@@ -77,14 +77,15 @@ dialog.modal p {
 }
 
 .modal-header h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .modal-header-icon {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-right: 0.4rem;
 }
 
 .modal-body {
   padding: 1rem;
+  font-size: 0.8rem;
 }
