@@ -1,0 +1,12 @@
+#player-body {
+  animation: player 1s ease;
+}
+
+@keyframes player {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
