@@ -1,5 +1,39 @@
-/* #player-body {
-  animation: player 1s ease;
+.entity-container {
+  position: absolute;
+}
+
+.entity-body {
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+
+  aspect-ratio: 1;
+}
+
+.player-container {
+  right: 0;
+  bottom: 0;
+  margin-right: 2rem;
+  width: 18%;
+}
+
+#player-body {
+  scale: -1 1;
+
+  background-image: url(/assets/characters/player1/idle/idle1.svg);
+
+  /* animation: player 1s ease; */
+}
+
+.enemy-container {
+  left: 0;
+  bottom: 0;
+  margin-left: 2rem;
+  width: 24%;
+}
+
+#enemy-body {
+  background-image: url(/assets/characters/player1/idle/idle1.svg);
 }
 
 @keyframes player {
@@ -9,4 +43,4 @@
   to {
     transform: rotateZ(360deg);
   }
-} */
+}

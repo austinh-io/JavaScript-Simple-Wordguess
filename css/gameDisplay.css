@@ -121,42 +121,7 @@
   border-radius: 100px;
 }
 
-.entity-container {
-  position: absolute;
-  height: 100%;
-}
 
-.entity-body {
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: contain;
-
-  height: 100%;
-}
-
-.player-container {
-  right: 0;
-  bottom: 0;
-  margin-right: 2rem;
-  width: 18%;
-}
-
-#player-body {
-  transform: scale(-1, 1);
-
-  background-image: url(/assets/characters/player1/idle/idle1.svg);
-}
-
-.enemy-container {
-  left: 0;
-  bottom: 0;
-  margin-left: 2rem;
-  width: 24%;
-}
-
-#enemy-body {
-  background-image: url(/assets/characters/player1/idle/idle1.svg);
-}
 
 #button-group {
   display: grid;
