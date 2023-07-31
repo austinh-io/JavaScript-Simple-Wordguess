@@ -20,9 +20,25 @@
 #player-body {
   scale: -1 1;
 
-  background-image: url(/assets/characters/player1/idle/idle1.svg);
+  /* background-image: url(/assets/characters/player1/idle/idle1.svg); */
 
-  /* animation: player 1s ease; */
+  animation: player 1s ease;
+}
+
+.entity-body:has(.player-idle) {
+  aspect-ratio: 44/57;
+}
+
+.player-idle {
+  height: 100%;
+  width: 100%;
+
+  background-image: url(/assets/characters/player1/player_idle.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /*This is used because of a bug in chrome. Otherwise a border will appear around the bounding box. */
+  /* padding: 50%; */
 }
 
 .enemy-container {
