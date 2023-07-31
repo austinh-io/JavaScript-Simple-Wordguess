@@ -22,7 +22,7 @@
 
   /* background-image: url(/assets/characters/player1/idle/idle1.svg); */
 
-  animation: player 1s ease;
+  /* animation: player 1s ease; */
 }
 
 .entity-body:has(.player-idle) {

@@ -40,10 +40,14 @@ let guessCount = 0;
 
 function animateScript() {
   let playerIdle = document.querySelector('.player-idle');
-  let idleFrame = playerIdle.offsetWidth;
-  let newIdleFrame = -idleFrame / 6;
-  console.log(newIdleFrame);
-  playerIdle.style.backgroundPosition = newIdleFrame + 'px' + ' 0px';
+  let singleFrameWidth = playerIdle.offsetWidth;
+  let totalFrameWidth = playerIdle.offsetWidth * 6;
+  let updatedFrame = -totalFrameWidth + singleFrameWidth * 6;
+
+  console.log(singleFrameWidth);
+  console.log(totalFrameWidth);
+  console.log(updatedFrame);
+  playerIdle.style.backgroundPosition = updatedFrame + 'px' + ' 0px';
 }
 
 animateScript();
