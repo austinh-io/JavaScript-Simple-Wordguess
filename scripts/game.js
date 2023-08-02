@@ -29,44 +29,6 @@ let theCategory = '';
 let initGuessCount = 0;
 let guessCount = 0;
 
-//Animation
-// const spinningPlayer = document
-//   .getElementById('player-body')
-//   .animate([{ transform: 'rotateZ(0deg)' }, { transform: 'rotateZ(360deg)' }], {
-//     fill: 'forwards',
-//     easing: 'steps(4, end)',
-//     duration: 1,
-//   });
-
-function animateScript() {
-  let playerIdle = document.querySelector('.player-idle');
-  let singleFrameWidth = playerIdle.offsetWidth;
-  let totalFrameWidth = playerIdle.offsetWidth * 6;
-  let updatedFrame = -totalFrameWidth + singleFrameWidth * 6;
-
-  console.log(singleFrameWidth);
-  console.log(totalFrameWidth);
-  console.log(updatedFrame);
-  playerIdle.style.backgroundPosition = updatedFrame + 'px' + ' 0px';
-}
-
-animateScript();
-
-function playerIdle() {
-  let rotator = document.getElementById('player-body'); //get the element
-  let dir = '/assets/characters/player1/idle/'; //images folder
-  let delayInSeconds = 2; //delay in seconds
-  let num = 1; //start number
-  let len = 6; //limit
-  setInterval(function () {
-    //interval changer
-    rotator.style.backgroundImage = 'url(' + dir + 'idle' + num + '.svg)'; //change picture
-    num = num === len ? 1 : ++num; //reset if last image reached
-  }, delayInSeconds * 50);
-}
-
-// playerIdle();
-
 function onButtonClicked() {
   if (gameEnabled) {
     this.disabled = true;

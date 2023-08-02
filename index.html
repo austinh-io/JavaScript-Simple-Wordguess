@@ -36,12 +36,6 @@
       href="./css/modals.css"
     />
 
-    <link
-      rel="stylesheet"
-      href="./css/gameCharacters.css"
-      class="css"
-    />
-
     <!-- JavaScript -->
     <script
       src="./scripts/menu.js"
@@ -98,15 +92,7 @@
           class="primary-navigation"
           data-visible="false"
         >
-          <li class="active">
-            <a href="#"> Button 1 </a>
-          </li>
-          <li>
-            <a href="#"> Button 2 </a>
-          </li>
-          <li>
-            <a href="#"> Button 3 </a>
-          </li>
+          <li class="active"></li>
           <li>
             <button
               class="button reset-button"
@@ -127,33 +113,6 @@
         <div class="game-container">
           <div class="game-info-container">
             <div id="main-game-info">
-              <div id="game-display-container">
-                <div class="game-scene-container">
-                  <div class="player-container entity-container">
-                    <div
-                      id="player-body"
-                      class="entity-body"
-                    >
-                      <img class="player-idle" />
-                    </div>
-                  </div>
-
-                  <div class="enemy-container entity-container">
-                    <div
-                      id="enemy-body"
-                      class="entity-body"
-                    ></div>
-                  </div>
-                </div>
-
-                <div id="game-display-caption-background">
-                  <div id="game-display-caption-text">Image Caption</div>
-                </div>
-                <img
-                  id="game-display"
-                  src=""
-                />
-              </div>
               <div id="word-display"></div>
             </div>
 
@@ -186,10 +145,6 @@
           </div>
 
           <div class="modal-body">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-              necessitatibus!
-            </p>
             <button class="button reset-button">
               <span class="material-symbols-outlined reset-button-icon">
                 replay </span
@@ -212,10 +167,6 @@
           </div>
 
           <div class="modal-body">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-              necessitatibus!
-            </p>
             <p class="game-end-word-reveal">
               The word was <span id="game-end-modal-word">###</span>
             </p>
