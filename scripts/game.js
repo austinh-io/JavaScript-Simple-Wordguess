@@ -61,8 +61,6 @@ function matchingLetter(word, letter) {
 }
 
 function setGameState() {
-  console.log(guessCount);
-  console.log(gameEnabled);
   if (gameEnabled) {
     //Player Won
     if (theWord.toLowerCase() === hiddenChars.join('').toLowerCase()) {
@@ -175,6 +173,7 @@ function setTestMode(bool) {
 
 function updateHiddenChars(index, char) {
   hiddenChars[index] = char;
+  console.log(char);
 }
 
 function decrementGuessCount() {
@@ -186,11 +185,9 @@ function decrementGuessCount() {
 }
 
 function hideWord() {
-  hiddenChars = [];
-
-  theWord.split('').forEach((character) => {
-    isLetter(character) ? hiddenChars.push('_') : hiddenChars.push(character);
-  });
+  hiddenChars = theWord
+    .split('')
+    .map((wordChar) => (isLetter(wordChar) ? '_' : wordChar));
 
   updateTheWordLabel(hiddenChars.join(''));
 }
