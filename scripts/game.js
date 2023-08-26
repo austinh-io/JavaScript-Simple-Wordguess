@@ -173,7 +173,6 @@ function setTestMode(bool) {
 
 function updateHiddenChars(index, char) {
   hiddenChars[index] = char;
-  console.log(char);
 }
 
 function decrementGuessCount() {
