@@ -226,7 +226,7 @@ function resetGame() {
 }
 
 async function catchWordList() {
-  const response = await fetch('../data/wordList.json');
+  const response = await fetch('/data/wordList.json');
   const wordListObj = await response.json();
 
   listOfWords = [...wordListObj];
